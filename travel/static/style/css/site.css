@@ -1,0 +1,168 @@
+@import "themeSwitcher.css";
+.hero {
+  background: url("/static/img/hero-banner.jpg") no-repeat center center;
+  height: 400px;
+}
+.overlay-hero {
+  height: 400px;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+.event-highlight {
+  flex-wrap: nowrap;
+}
+
+.event-highlight-image {
+  max-width: 325px;
+  object-fit: cover;
+  position: relative;
+}
+
+.event-highlight-image:hover {
+  transition: transform 0.3s ease;
+  transform: scale(1.1);
+}
+
+.event-title-container {
+  padding-left: 0%;
+}
+
+.event-highlight-title {
+  font-size: 1.75rem;
+  font-weight: bold;
+}
+
+.event-highlight-text {
+  color: rgb(240 255 240);
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  padding: 1.5rem;
+  position: relative;
+  flex-shrink: unset;
+  width: 100%;
+}
+
+.event-highlight-description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: justify;
+  height: 100%;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.event-highlight-date {
+  font-size: 80%;
+}
+
+.event-highlight-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.event-artist {
+  font-size: 80%;
+}
+
+@media (max-width: 900px) {
+  .event-highlight-footer {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .event-highlight-footer .col-6 .list-group {
+    justify-content: center !important;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .event-highlight {
+    flex-direction: column;
+  }
+
+  .event-highlight-image {
+    max-width: 100%;
+    width: 100%;
+    max-height: 15rem;
+    transform: none;
+    position: static;
+  }
+
+  .event-highlight-image:hover {
+    transition: transform 0.3s ease;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 575px) {
+  .event-title-row {
+    justify-items: center; /* Center items horizontally */
+    text-align: center; /* Center text within the grid items */
+  }
+
+  .event-tickets {
+    justify-content: center; /* Center content horizontally */
+  }
+
+  .event-tickets .alert {
+    margin: 0 auto; /* Centers the alert within its container */
+    max-width: 500px; /* Optional: restricts the maximum width of the alert */
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
+  }
+}
+
+@keyframes event-highlight-background {
+  0% {
+    background-position: 19% 0%;
+  }
+  50% {
+    background-position: 82% 100%;
+  }
+  100% {
+    background-position: 19% 0%;
+  }
+}
+
+.hr-blurry {
+  border: none;
+  height: 0.05rem;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), rgb(255, 255, 255) 45%, rgb(255, 255, 255) 55%, rgba(255, 255, 255, 0));
+}
+
+.footer-icons {
+  font-size: 2rem;
+  color: rgb(255, 255, 255);
+}
+
+.badge-remover {
+  width: 16px;
+  height: 16px;
+}
+
+.artistPill {
+  font-size: 100%;
+}
+
+.fixed-footer-bottom {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 232px; /* Ensure this matches the padding */
+  background-color: #4caf50; /* Example color */
+}
+
+.create-bg {
+  background: linear-gradient(90deg, #ffffff, #cacaca, #ffffff);
+  width: 100%;
+}

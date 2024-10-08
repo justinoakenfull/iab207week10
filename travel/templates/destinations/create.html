@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {% from 'bootstrap5/form.html' import render_form %} {% block content %}
+
+<!-- Page Container with Background Gradient -->
+<div class="container py-5 create-bg">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <!-- Card with Shadows and Styling -->
+      <div class="card shadow-lg border-0">
+        <div class="card-body p-5" style="background-color: #ffffff; border-radius: 10px">
+          <!-- Page Title and Subtitle -->
+          <h2 class="text-center display-4 mb-4" style="color: #00796b">Add a New Travel Destination</h2>
+          <p class="text-muted text-center mb-5">Enter the details for an exciting travel destination that your clients will love.</p>
+
+          <!-- Form Rendering with Customized Submit Button -->
+          {{ render_form(form) }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

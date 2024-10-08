@@ -1,0 +1,43 @@
+{% extends 'base.html' %} {% from 'bootstrap5/form.html' import render_form %} {% block content %}
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh">
+  <div class="row w-100">
+    <!-- Form Card -->
+    <div class="col-lg-6 mx-auto">
+      <div class="card shadow-lg border-0">
+        <div class="card-body p-5">
+          <!-- Page Heading -->
+          <h3 class="text-center mb-4">{{ heading }}</h3>
+
+          <!-- Flash Messages -->
+          {% with messages = get_flashed_messages() %} {% if messages %}
+          <div class="text-center mb-3">
+            {% for message in messages %}
+            <div class="alert alert-info">{{ message }}</div>
+            {% endfor %}
+          </div>
+          {% endif %} {% endwith %}
+
+          <!-- Render Form -->
+          {{ render_form(form) }}
+
+          <!-- Conditional Registration Link for Login Page -->
+          {% if heading|lower == 'login' %}
+          <div class="text-center mt-4">
+            <p>New user? <a href="{{ url_for('auth.register') }}" class="text-primary">Click here to register.</a></p>
+          </div>
+          {% endif %}
+
+          <!-- Conditional Login Link for Registration Page -->
+          {% if heading|lower == 'register' %}
+          <div class="text-center mt-4">
+            <p>Already have an account? <a href="{{ url_for('auth.login') }}" class="text-primary">Click here to login.</a></p>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

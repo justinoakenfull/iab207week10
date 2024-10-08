@@ -1,0 +1,66 @@
+{% extends 'base.html' %} {% from 'bootstrap5/form.html' import render_form %} {% block content %}
+
+<div class="row bg-primary">
+  <div class="col-md-12 text-center text-white">
+    <h1 class="display-3">{{ destination.name }}</h1>
+    <hr class="hr-blurry" />
+    <p class="lead">Discover your next adventure in this popular destination!</p>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <div class="row justify-content-between align-items-center mb-5">
+    <div class="col-md-8">
+      <h2 class="text-primary">{{ destination.name }}</h2>
+      <p class="lead">A popular destination for travelers around the world.</p>
+      <hr />
+    </div>
+    <div class="col-md-4 text-end">
+      <div class="bg-light p-4 rounded shadow-sm">
+        <p class="mb-0">1 AUD equals</p>
+        <h3 class="text-dark font-weight-bold">{{ destination.currency }}</h3>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-5">
+    <div class="col-md-12">
+      <div class="card border-0 shadow-lg">
+        <div class="row g-0">
+          <div class="col-lg-5">
+            <img src="{{ destination.image }}" class="img-fluid rounded-start" alt="{{ destination.name }}" />
+          </div>
+          <div class="col-lg-7" style="background: linear-gradient(135deg, #f8f9fa, #e9ecef)">
+            <div class="card-body p-5">
+              <small class="text-muted">Stay 2 nights</small>
+              <h5 class="card-title mt-3">{{ destination.name }}</h5>
+              <p class="card-text">{{ destination.description }}</p>
+              <a href="#" class="btn btn-primary btn-lg mt-3">Book Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-5">
+    <div class="col-md-12">
+      <h2>Comments</h2>
+    </div>
+    <div class="col-md-12">{{ render_form(form, "/destinations/{0}/comment".format(destination.id)) }}</div>
+  </div>
+  <div class="row">
+    {% for comment in destination.comments %}
+    <div class="col-md-12 mb-3">
+      <div class="p-3 bg-light border rounded shadow-sm">
+        <p class="d-flex justify-content-between">
+          <strong>{{ comment.user.name }}</strong>
+          <span><span class="text-danger-emphasis">Posted: </span><span class="text-muted"> {{ comment.created_at }}</span></span>
+        </p>
+        <p>{{ comment.text }}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}
