@@ -5,15 +5,36 @@
     <div class="col-md-8">
       <div class="card shadow p-5 mb-5 bg-light">
         <h1 class="text-center mb-3">Find our best travel deals</h1>
+
+        <form
+          class="form-inline d-flex flex-nowrap"
+          action="{{ url_for('main.search') }}"
+        >
+          <input
+            type="text"
+            name="search"
+            class="form-control flex-grow-1 my-1 mr-sm-2"
+            id="SearchForm"
+          />
+          <button type="submit" class="flex-shrink-1 btn btn-primary my-1 ms-2">
+            Submit
+          </button>
+        </form>
         <!-- Add method="POST" and action targeting the route -->
         <form class="form-inline d-flex flex-nowrap" method="POST">
           <!-- Add a name attribute to capture the destination id -->
-          <select class="form-select" aria-label="Default select example" name="destination_id">
+          <select
+            class="form-select"
+            aria-label="Default select example"
+            name="destination_id"
+          >
             {% for destination in destinations %}
             <option value="{{ destination.id }}">{{ destination.name }}</option>
             {% endfor %}
           </select>
-          <button type="submit" class="flex-shrink-1 btn btn-primary ms-2">Go!</button>
+          <button type="submit" class="flex-shrink-1 btn btn-primary ms-2">
+            Go!
+          </button>
         </form>
       </div>
     </div>
@@ -33,8 +54,10 @@
         <div class="align-self-center media-body">
           <h5 class="mt-0">Find the best destinations on earth</h5>
           <p class="d-none d-sm-block">
-            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus
-            viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla.
+            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
+            scelerisque ante sollicitudin. Cras purus odio, vestibulum in
+            vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi
+            vulputate fringilla.
           </p>
           <a href="#" class="btn btn-primary">Join Now</a>
         </div>
@@ -46,16 +69,31 @@
     {% for destination in top_destinations %}
     <div class="card m-3">
       <img
-        class="card-img-top"
+        class="card-img-top img-fluid"
         src="{{ destination.image }}"
         alt="{{ destination.name }}"
-        style="min-height: 200px; max-height: 300px; min-width: 400px; object-fit: contain"
+        style="
+          min-height: 200px;
+          max-height: 300px;
+          min-width: 400px;
+          object-fit: contain;
+        "
       />
       <div class="card-body">
         <h5 class="card-title">{{ destination.name }}</h5>
         <p class="card-text">{{ destination.description }}</p>
       </div>
-      <div class="card-footer"><small class="text-muted">Currency: {{ destination.currency }}</small></div>
+      <div
+        class="card-footer d-flex justify-content-between align-items-center"
+      >
+        <small class="text-muted">Currency: {{ destination.currency }}</small>
+        <a
+          href="{{url_for('destination.show', id=destination.id)}}"
+          class="btn btn-primary"
+        >
+          View Details
+        </a>
+      </div>
     </div>
     {% endfor %}
   </div>
