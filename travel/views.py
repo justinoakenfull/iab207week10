@@ -11,7 +11,7 @@ def index():
         destination_id = request.form.get('destination_id')
         return redirect(url_for('destination.show', id=destination_id))
     destinations = db.session.execute(db.select(Destination)).scalars()
-    top_destinations = db.session.scalars(db.select(Destination).where(Destination.id>4).order_by(func.random()).limit(3))
+    top_destinations = db.session.scalars(db.select(Destination).order_by(func.random()).limit(3))
     return render_template('index.html', destinations=destinations, top_destinations=top_destinations)
 
 @mainbp.route('/search')

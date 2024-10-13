@@ -69,14 +69,15 @@
     {% for destination in top_destinations %}
     <div class="card m-3">
       <img
-        class="card-img-top img-fluid"
+        class="card-img-top d-flex align-content-start"
         src="{{ destination.image }}"
         alt="{{ destination.name }}"
         style="
           min-height: 200px;
           max-height: 300px;
-          min-width: 400px;
+          min-width: 100%;
           object-fit: contain;
+          align-items: start;
         "
       />
       <div class="card-body">
